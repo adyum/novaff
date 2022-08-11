@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Keeper List</title>
+  <link rel="stylesheet" href="../stylesheets/style.css">
+</head>
+<body>
+  <% include ./includes/navigation %>
+    <div class="table-data">
+<h2>Keepers Data</h2>
+
+    
+    <%
+    if(userData.length!=0){
+    var i=1;
+    var adamRB=0;
+    userData.forEach(function(data){
+    %>
+    <%
+    if(data.owner=="Adam Staryak" & data.pos=="RB"){ %>
+    <% adamRB++; %>
+    <% } %>
+    <%  i++; }) %>
+    <% } else{ %>
+        <div>No data found.</div>
+    <% } %>
+<div>Adam has <% console.log(adamRB); %></div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Admin Area</title>
+  <link rel="stylesheet" href="stylesheets/style.css">
+</head>
+<body>
+  <% include ./includes/navigation %>
+    <div class="table-data">
+<h1>Admin Panel</h1>
+    <table border="1">
+        <tr>
+            <th>Name</th>
+            <th>Owner</th>
+            <th>Keeper</th>
+            <th>Add Keeper</th>
+            <th>Remove Keeper</th>
+            <th>Change Team</th>
+        </tr>
+        
+        <%
+        if(userData.length!=0){
+        var i=1;
+        userData.forEach(function(data){
+        %>
+        <tr>
+            <td class="<%=data.pos %>"><%=data.name %></td>
+            <td class="<%=data.pos %>"><%=data.owner %></td>
+            <td class="<%=data.pos %>"><%=data.keeper %></td>
+            <td class="<%=data.pos %>"><a href="/add-keeper/<%=data.fantnum%>">Add</a></td>
+            <td class="<%=data.pos %>"><a href="/remove-keeper/<%=data.fantnum%>">Remove</a></td>
+            <td class="<%=data.pos %>"><a href="/confirm-team/<%=data.fantnum%>">Change Team</a></td>
+        </tr>
+        <%  i++; }) %>
+        <% } else{ %>
+            <tr>
+                <td colspan="6">No Data Found</td>
+            </tr>
+        <% } %>
+    </table>
+    </div>
+</body>
+</html>
