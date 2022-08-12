@@ -1,30 +1,41 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <title>Keeper List</title>
-  <link rel="stylesheet" href="../stylesheets/style.css">
+  <title>Available Players</title>
+  <link rel="stylesheet" href="stylesheets/style.css">
 </head>
 <body>
   <% include ./includes/navigation %>
     <div class="table-data">
-<h2>Keepers Data</h2>
-
-    
-    <%
-    if(userData.length!=0){
-    var i=1;
-    var adamRB=0;
-    userData.forEach(function(data){
-    %>
-    <%
-    if(data.owner=="Adam Staryak" & data.pos=="RB"){ %>
-    <% adamRB++; %>
-    <% } %>
-    <%  i++; }) %>
-    <% } else{ %>
-        <div>No data found.</div>
-    <% } %>
-<div>Adam has <% console.log(adamRB); %></div>
+<h2>List of Keepers</h2>
+    <table border="1">
+        <tr>
+            <th>Rank</th>
+            <th>Name</th>
+            <th>Position</th>
+            <th>Team/Bye Week</th>
+            <th>Owner</th>
+        </tr>
+        
+        <%
+        if(userData.length!=0){
+        var i=1;
+        userData.forEach(function(data){
+        %>
+        <tr>
+            <td class="<%=data.pos %>"><%=i; %></td>
+            <td class="<%=data.pos %>"><%=data.name %></td>
+            <td class="<%=data.pos %>"><%=data.pos %></td>
+            <td class="<%=data.pos %>"><%=data.team %></td>
+            <td class="<%=data.pos %>"><%=data.owner %></td>
+        </tr>
+        <%  i++; }) %>
+        <% } else{ %>
+            <tr>
+                <td colspan="6">No Data Found</td>
+            </tr>
+        <% } %>
+    </table>
     </div>
 </body>
 </html>
