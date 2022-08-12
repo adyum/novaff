@@ -87,5 +87,12 @@ router.get('/change-team/:owner/:id', function(req, res) {
   });
 });
 
+router.get('/rookie', function(req, res) {
+  var sql=`SELECT * from players WHERE rookie='yes'`
+  db.query(sql,[req.params.owner,req.params.id], function (err, data, field){
+    if (err) throw err;
+    res.render('change-team', {title: 'Confirm change players team', userData: data});
+  });
+});
 
 module.exports = router;
