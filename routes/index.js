@@ -95,4 +95,12 @@ router.get('/rookies', function(req, res) {
   });
 });
 
+router.get('/add-rookie/:id', function(req, res) {
+  var sql=`UPDATE players SET rookie='yes' WHERE fantnum=?`;
+  db.query(sql,[req.params.id], function (err, data, field){
+    if (err) throw err;
+    res.render('add-rookie', {title: 'Make rookie', userData: data});
+  });
+});
+
 module.exports = router;
