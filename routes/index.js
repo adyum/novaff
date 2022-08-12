@@ -72,7 +72,7 @@ router.get('/confirm-team/:id', function(req, res) {
 });
 
 router.get('/keepers', function(req, res) {
-  var sql=`SELECT * from players WHERE keeper='yes' sortby owner`;
+  var sql=`SELECT * from players WHERE keeper='yes' ORDER BY owner`;
   db.query(sql,[req.params.id], function (err, data, field){
     if (err) throw err;
     res.render('keepers', {title: 'List of Keepers', userData: data});
