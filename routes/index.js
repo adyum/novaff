@@ -120,4 +120,12 @@ router.get('/use-diaper/:id', function(req, res, next) {
   });
 });
 
+router.get('/weight', function(req, res, next) {
+  var sql='SELECT * from weight';
+  db2.query(sql,function (err, data, fields){
+    if (err) throw err;
+    res.render('weight', {title: 'Claire Weight', userData: data});
+  });
+});
+
 module.exports = router;
