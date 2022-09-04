@@ -1,6 +1,7 @@
 var express = require('express');
 var router = express.Router();
 var db=require('../database');
+var db2=require('../database2');
 
 /* GET home page. */
 router.get('/', function(req, res) {
@@ -73,7 +74,7 @@ router.get('/confirm-team/:id', function(req, res) {
 
 router.get('/keepers', function(req, res) {
   var sql=`SELECT * from players WHERE keeper='yes' ORDER BY owner`;
-  db.query(sql,[req.params.id], function (err, data, field){
+  db.query(sql,[req.params.id], function (err, data){
     if (err) throw err;
     res.render('keepers', {title: 'List of Keepers', userData: data});
   });
@@ -81,7 +82,7 @@ router.get('/keepers', function(req, res) {
 
 router.get('/change-team/:owner/:id', function(req, res) {
   var sql=`UPDATE players SET owner=? WHERE fantnum=?`
-  db.query(sql,[req.params.owner,req.params.id], function (err, data, field){
+  db.query(sql,[req.params.owner,req.params.id], function (err, data){
     if (err) throw err;
     res.render('change-team', {title: 'Confirm change players team', userData: data});
   });
@@ -89,7 +90,7 @@ router.get('/change-team/:owner/:id', function(req, res) {
 
 router.get('/rookies', function(req, res) {
   var sql=`SELECT * from players WHERE rookie='yes'`
-  db.query(sql,[req.params.owner,req.params.id], function (err, data, field){
+  db.query(sql,[req.params.owner,req.params.id], function (err, data){
     if (err) throw err;
     res.render('rookies', {title: 'Rookie Players', userData: data});
   });
@@ -97,9 +98,25 @@ router.get('/rookies', function(req, res) {
 
 router.get('/add-rookie/:id', function(req, res) {
   var sql=`UPDATE players SET rookie='yes' WHERE fantnum=?`;
-  db.query(sql,[req.params.id], function (err, data, field){
+  db.query(sql,[req.params.id], function (err, data){
     if (err) throw err;
     res.render('add-rookie', {title: 'Make rookie', userData: data});
+  });
+});
+
+router.get('/diapers', function(req, res, next) {
+  var sql='SELECT * from diaper';
+  db2.query(sql,function (err, data, fields){
+    if (err) throw err;
+    res.render('diapers', {title: 'List of Diapers', userData: data});
+  });
+});
+
+router.get('/use-diaper/:id', function(req, res, next) {
+  var sql='UPDATE diaper SET quantity = quantity-1 where id = ?';
+  db2.query(sql,[req.params.id],function (err, data, fields){
+    if (err) throw err;
+    res.render('use-diaper', {title: 'List of Diapers', userData: data});
   });
 });
 
