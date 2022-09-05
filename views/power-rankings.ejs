@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Power Rankings Week <%=userData[0].id %></title>
+  <link rel="stylesheet" href="../stylesheets/style.css">
+</head>
+<body>
+  <% include ./includes/navigation %>
+  <div class="power-rankings">
+    <div class="intro"><%=userData[0].intro_blurb %></div>
+    <div class="player">1 - <%=userData[0].rank_1_team %></div>
+    <div class="blurb"><%=userData[0].rank_1_blurb %></div>
+    <div class="player">2 - <%=userData[0].rank_2_team %></div>
+    <div class="blurb"><%=userData[0].rank_2_blurb %></div>
+    <div class="player">3 - <%=userData[0].rank_3_team %></div>
+    <div class="blurb"><%=userData[0].rank_3_blurb %></div>
+    <div class="player">4 - <%=userData[0].rank_4_team %></div>
+    <div class="blurb"><%=userData[0].rank_4_blurb %></div>
+    <div class="player">5 - <%=userData[0].rank_5_team %></div>
+    <div class="blurb"><%=userData[0].rank_5_blurb %></div>
+    <div class="player">6 - <%=userData[0].rank_6_team %></div>
+    <div class="blurb"><%=userData[0].rank_6_blurb %></div>
+    <div class="player">7 - <%=userData[0].rank_7_team %></div>
+    <div class="blurb"><%=userData[0].rank_7_blurb %></div>
+    <div class="player">8 - <%=userData[0].rank_8_team %></div>
+    <div class="blurb"><%=userData[0].rank_8_blurb %></div>
+    <div class="player">9 - <%=userData[0].rank_9_team %></div>
+    <div class="blurb"><%=userData[0].rank_9_blurb %></div>
+    <div class="player">10 - <%=userData[0].rank_10_team %></div>
+    <div class="blurb"><%=userData[0].rank_10_blurb %></div>
+  </div>
+  <% include ./includes/footer %>
+</body>
+</html>

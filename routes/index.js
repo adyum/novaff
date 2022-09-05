@@ -104,6 +104,14 @@ router.get('/add-rookie/:id', function(req, res) {
   });
 });
 
+router.get('/power-rankings/:id', function(req, res) {
+  var sql=`SELECT * from power_rankings where id=?`;
+  db.query(sql,[req.params.id], function (err, data){
+    if (err) throw err;
+    res.render('power-rankings', {title: 'Power Rankings', userData: data});
+  });
+});
+
 router.get('/diapers', function(req, res, next) {
   var sql='SELECT * from diaper';
   db2.query(sql,function (err, data, fields){
