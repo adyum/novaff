@@ -1,7 +1,6 @@
 var express = require('express');
 var router = express.Router();
 var db=require('../database');
-var db2=require('../database2');
 
 /* GET home page. */
 router.get('/', function(req, res) {
@@ -109,30 +108,6 @@ router.get('/power-rankings/:id', function(req, res) {
   db.query(sql,[req.params.id], function (err, data){
     if (err) throw err;
     res.render('power-rankings', {title: 'Power Rankings', userData: data});
-  });
-});
-
-router.get('/diapers', function(req, res, next) {
-  var sql='SELECT * from diaper';
-  db2.query(sql,function (err, data, fields){
-    if (err) throw err;
-    res.render('diapers', {title: 'List of Diapers', userData: data});
-  });
-});
-
-router.get('/use-diaper/:id', function(req, res, next) {
-  var sql='UPDATE diaper SET quantity = quantity-1 where id = ?';
-  db2.query(sql,[req.params.id],function (err, data, fields){
-    if (err) throw err;
-    res.render('use-diaper', {title: 'List of Diapers', userData: data});
-  });
-});
-
-router.get('/weight', function(req, res, next) {
-  var sql='SELECT * from weight';
-  db2.query(sql,function (err, data, fields){
-    if (err) throw err;
-    res.render('weight', {title: 'Claire Weight', userData: data});
   });
 });
 
