@@ -6,7 +6,8 @@
   <meta http-equiv="refresh" content="60">
 </head>
 <body>
-  <% include ./includes/navigation %>
+    <%- include('includes/logo'); %>
+    <%- include('includes/navigation'); %>
     <div class="table-data">
 <h2>Best Available Steal</h2>
         <div>Shawn, Adam, Kevin, Brendan, Pulse, Zack, Kyle, Brian, Jim, Jack</div>
@@ -39,6 +40,6 @@
         <% } %>
     </table>
     </div>
-    <% include ./includes/footer %>
+    <%- include('includes/footer'); %>
 </body>
 </html>

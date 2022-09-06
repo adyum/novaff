@@ -5,7 +5,8 @@
   <link rel="stylesheet" href="stylesheets/style.css">
 </head>
 <body>
-  <% include ./includes/navigation %>
+    <%- include('includes/logo'); %>
+    <%- include('includes/navigation'); %>
     <div class="table-data">
 <h2>Best Available Player</h2>
     <table border="1">
@@ -39,6 +40,6 @@
         <% } %>
     </table>
     </div>
-    <% include ./includes/footer %>
+    <%- include('includes/footer'); %>
 </body>
 </html>

@@ -5,11 +5,12 @@
   <link rel="stylesheet" href="/stylesheets/style.css">
 </head>
 <body>
-  <% include ./includes/navigation %>
+  <%- include('includes/logo'); %>
+  <%- include('includes/navigation'); %>
     <div class="table-data">
         <h2>New owner</h2>
         <h2>Back to <a href='/admin'>admin</a></h2>
     </div>
-    <% include ./includes/footer %>
+    <%- include('includes/footer'); %>
 </body>
 </html>

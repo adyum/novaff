@@ -5,7 +5,8 @@
   <link rel="stylesheet" href="../stylesheets/style.css">
 </head>
 <body>
-  <% include ./includes/navigation %>
+  <%- include('includes/logo'); %>
+  <%- include('includes/navigation'); %>
     <div class="table-data">
 <h2>Change Team</h2>
 
@@ -22,6 +23,6 @@
     <h3><a href="../change-team/Zack OMalley/<%=userData[0].fantnum %>">Change team to Zack O'Malley</a></h3>
 </div>
     </div>
-    <% include ./includes/footer %>
+    <%- include('includes/footer'); %>
 </body>
 </html>

@@ -5,7 +5,8 @@
   <link rel="stylesheet" href="stylesheets/style.css">
 </head>
 <body>
-  <% include ./includes/navigation %>
+    <%- include('includes/logo'); %>
+    <%- include('includes/navigation'); %>
     <div class="table-data">
 <h1>Admin Panel</h1>
     <table border="1">
@@ -41,6 +42,6 @@
         <% } %>
     </table>
     </div>
-    <% include ./includes/footer %>
+    <%- include('includes/footer'); %>
 </body>
 </html>
