@@ -27,5 +27,9 @@
   "bugs": {
     "url": "https://github.com/adyum/novaff/issues"
   },
-  "homepage": "https://github.com/adyum/novaff#readme"
+  "homepage": "https://github.com/adyum/novaff#readme",
+  "devDependencies": {
+    "eslint": "^8.24.0",
+    "eslint-plugin-react": "^7.31.8"
+  }
 }

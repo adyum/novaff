@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<head>
+    <title>Matchups</title>
+    <link rel="stylesheet" href="stylesheets/style.css">
+</head>
+
+<body>
+    <%- include('includes/logo'); %>
+        <%- include('includes/navigation'); %>
+            <div class="table-data">
+                <h2>Full Player List</h2>
+                <table border="1">
+                    <tr>
+                        <th>Rank</th>
+                        <th>Team</th>
+                        <th>Score</th>
+                        <th>Result</th>
+                    </tr>
+
+                    <% if(userData.length!=0){ var i=1; userData.forEach(function(data){ %>
+                        <tr>
+                            <td>
+                                <%=i; %>
+                            </td>
+                            <td>
+                                <%=data.team %>
+                            </td>
+                            <td>
+                                <%=data.score %>
+                            </td>
+                            <td>
+                                <%=data.result %>
+                            </td>
+                        </tr>
+                        <% i++; }) %>
+                            <% } else{ %>
+                                <tr>
+                                    <td colspan="6">No Data Found</td>
+                                </tr>
+                                <% } %>
+                </table>
+            </div>
+            <%- include('includes/footer'); %>
+</body>
+
+</html>
