@@ -5,7 +5,9 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <head>
-    <title>Matchups</title>
+    <title>
+        <%=title %>
+    </title>
     <link rel="stylesheet" href="/stylesheets/style.css">
 </head>
 
@@ -16,7 +18,7 @@
                 <h2>Full Player List</h2>
                 <table border="1">
                     <tr>
-                        <th>Rank</th>
+                        <th>Matchup</th>
                         <th>Team</th>
                         <th>Score</th>
                         <th>Result</th>
@@ -25,7 +27,7 @@
                     <% if(userData.length!=0){ var i=1; userData.forEach(function(data){ %>
                         <tr>
                             <td>
-                                <%=i; %>
+                                <%=data.matchup_id %>
                             </td>
                             <td>
                                 <%=data.team %>

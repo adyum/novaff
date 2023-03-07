@@ -1,44 +1,55 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title><%=userData[0].owner %>'s Team</title>
-  <link rel="stylesheet" href="../stylesheets/style.css">
+    <title>
+        <%=userData[0].owner %>'s Team
+    </title>
+    <link rel="stylesheet" href="../stylesheets/style.css">
 </head>
+
 <body>
     <%- include('includes/logo'); %>
-    <%- include('includes/navigation'); %>
-    <div class="table-data">
-    <h2><%=userData[0].owner %>'s Current Roster</h2>
-    <table border="1">
-        <tr>
-            <th>Rank</th>
-            <th>Name</th>
-            <th>Position</th>
-            <th>Team/Bye Week</th>
-        </tr>
-        
-        <%
-        if(userData.length!=0){
-        var i=1;
-        userData.forEach(function(data){
-        %>
-        <tr>
-            <td class="<%=data.pos %>"><%=i; %></td>
-            <td class="<%=data.pos %>"><%=data.name %></td>
-            <td class="<%=data.pos %>"><%=data.pos %></td>
-            <td class="<%=data.pos %>"><%=data.team %></td>
-        </tr>
-        <%  i++; }) %>
-        <% } else{ %>
-            <tr>
-                <td colspan="6">No Data Found</td>
-            </tr>
-        <% } %>
-    </table>
-    </div>
-    <%- include('includes/footer'); %>
+        <%- include('includes/navigation'); %>
+            <div class="table-data">
+                <h2>
+                    <%=userData[0].owner %>'s Current Roster
+                </h2>
+                <table border="1">
+                    <tr>
+                        <th>Rank</th>
+                        <th>Name</th>
+                        <th>Position</th>
+                        <th>Team/Bye Week</th>
+                    </tr>
+
+                    <% if(userData.length!=0){ var i=1; userData.forEach(function(data){ %>
+                        <tr>
+                            <td class="<%=data.pos %>">
+                                <%=i; %>
+                            </td>
+                            <td class="<%=data.pos %>">
+                                <%=data.name %>
+                            </td>
+                            <td class="<%=data.pos %>">
+                                <%=data.pos %>
+                            </td>
+                            <td class="<%=data.pos %>">
+                                <%=data.team %>
+                            </td>
+                        </tr>
+                        <% i++; }) %>
+                            <% } else{ %>
+                                <tr>
+                                    <td colspan="6">No Data Found</td>
+                                </tr>
+                                <% } %>
+                </table>
+            </div>
+            <%- include('includes/footer'); %>
 </body>
+
 </html>

@@ -119,7 +119,7 @@ router.get('/matchup/:season/:week', function(req, res) {
 	var sql='SELECT * from matchups where season=? and week=? order by matchup_id';
 	db.query(sql,[req.params.season,req.params.week], function (err, data){
 		if (err) throw err;
-		res.render('matchup', {title: 'Matchups', userData: data});
+		res.render('matchup', {title: 'Week ' + req.params.week, userData: data});
 	});
 });
 
