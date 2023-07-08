@@ -8,7 +8,7 @@ router.get('/', function(req, res) {
 });
 
 router.get('/player-list', function(req, res) {
-	var sql='SELECT * from players ORDER by rank';
+	var sql='SELECT * from players ORDER by players.rank';
 	db.query(sql,function (err, data){
 		if (err) throw err;
 		res.render('player-list', {title: 'Player List', userData: data});
@@ -16,7 +16,7 @@ router.get('/player-list', function(req, res) {
 });
 
 router.get('/available', function(req, res) {
-	var sql='SELECT * from players WHERE owner=\'available\' ORDER by rank';
+	var sql='SELECT * from players WHERE owner=\'available\' ORDER by players.rank';
 	db.query(sql,function (err, data){
 		if (err) throw err;
 		res.render('available', {title: 'Available', userData: data});
@@ -24,7 +24,7 @@ router.get('/available', function(req, res) {
 });
 
 router.get('/steal', function(req, res) {
-	var sql='SELECT * from players WHERE keeper=\'no\' and owner!=\'available\' ORDER by rank';
+	var sql='SELECT * from players WHERE keeper=\'no\' and owner!=\'available\' ORDER by players.rank';
 	db.query(sql,function (err, data){
 		if (err) throw err;
 		res.render('steal', {title: 'Steal Draft', userData: data});
@@ -32,7 +32,7 @@ router.get('/steal', function(req, res) {
 });
 
 router.get('/admin', function(req, res) {
-	var sql='SELECT * from players ORDER by rank';
+	var sql='SELECT * from players ORDER by players.rank';
 	db.query(sql,function (err, data){
 		if (err) throw err;
 		res.render('admin', {title: 'Admin Area', userData: data});
@@ -40,7 +40,7 @@ router.get('/admin', function(req, res) {
 });
 
 router.get('/teams/:id', function(req, res) {
-	var sql='SELECT * from players WHERE owner=? ORDER by rank';
+	var sql='SELECT * from players WHERE owner=? ORDER by players.rank';
 	db.query(sql,[req.params.id], function (err, data){
 		if (err) throw err;
 		res.render('teams', {title: '? Team', userData: data});
@@ -72,7 +72,7 @@ router.get('/confirm-team/:id', function(req, res) {
 });
 
 router.get('/keepers', function(req, res) {
-	var sql='SELECT * from players WHERE keeper=\'yes\' ORDER BY owner';
+	var sql='SELECT * from players WHERE keeper=\'yes\' ORDER BY players.owner';
 	db.query(sql,[req.params.id], function (err, data){
 		if (err) throw err;
 		res.render('keepers', {title: 'List of Keepers', userData: data});
@@ -116,7 +116,7 @@ router.get('/api-test', function(req, res) {
 });
 
 router.get('/matchup/:season/:week', function(req, res) {
-	var sql='SELECT * from matchups where season=? and week=? order by matchup_id';
+	var sql='SELECT * from matchups where season=? and week=? order by mactchups.matchup_id';
 	db.query(sql,[req.params.season,req.params.week], function (err, data){
 		if (err) throw err;
 		res.render('matchup', {title: 'Week ' + req.params.week, userData: data});
