@@ -8,7 +8,7 @@ router.get('/', function(req, res) {
 });
 
 router.get('/player-list', function(req, res) {
-	var sql='SELECT * from players ORDER by players.rank';
+	var sql='SELECT * from players23 ORDER by players23.rank';
 	db.query(sql,function (err, data){
 		if (err) throw err;
 		res.render('player-list', {title: 'Player List', userData: data});
@@ -16,7 +16,7 @@ router.get('/player-list', function(req, res) {
 });
 
 router.get('/available', function(req, res) {
-	var sql='SELECT * from players WHERE owner=\'available\' ORDER by players.rank';
+	var sql='SELECT * from players23 WHERE owner=\'available\' ORDER by players23.rank';
 	db.query(sql,function (err, data){
 		if (err) throw err;
 		res.render('available', {title: 'Available', userData: data});
@@ -24,7 +24,7 @@ router.get('/available', function(req, res) {
 });
 
 router.get('/steal', function(req, res) {
-	var sql='SELECT * from players WHERE keeper=\'no\' and owner!=\'available\' ORDER by players.rank';
+	var sql='SELECT * from players23 WHERE keeper=\'no\' and owner!=\'available\' ORDER by players23.rank';
 	db.query(sql,function (err, data){
 		if (err) throw err;
 		res.render('steal', {title: 'Steal Draft', userData: data});
@@ -32,7 +32,7 @@ router.get('/steal', function(req, res) {
 });
 
 router.get('/admin', function(req, res) {
-	var sql='SELECT * from players ORDER by players.rank';
+	var sql='SELECT * from players23 ORDER by players23.rank';
 	db.query(sql,function (err, data){
 		if (err) throw err;
 		res.render('admin', {title: 'Admin Area', userData: data});
@@ -40,7 +40,7 @@ router.get('/admin', function(req, res) {
 });
 
 router.get('/teams/:id', function(req, res) {
-	var sql='SELECT * from players WHERE owner=? ORDER by players.rank';
+	var sql='SELECT * from players23 WHERE owner=? ORDER by players23.rank';
 	db.query(sql,[req.params.id], function (err, data){
 		if (err) throw err;
 		res.render('teams', {title: '? Team', userData: data});
@@ -48,7 +48,7 @@ router.get('/teams/:id', function(req, res) {
 });
 
 router.get('/add-keeper/:id', function(req, res) {
-	var sql='UPDATE players SET keeper=\'yes\' WHERE fantnum=?';
+	var sql='UPDATE players23 SET keeper=\'yes\' WHERE fantnum=?';
 	db.query(sql,[req.params.id], function (err, data){
 		if (err) throw err;
 		res.render('add-keeper', {title: 'Make keeper', userData: data});
@@ -56,7 +56,7 @@ router.get('/add-keeper/:id', function(req, res) {
 });
 
 router.get('/remove-keeper/:id', function(req, res) {
-	var sql='UPDATE players SET keeper=\'no\' WHERE fantnum=?';
+	var sql='UPDATE players23 SET keeper=\'no\' WHERE fantnum=?';
 	db.query(sql,[req.params.id], function (err, data){
 		if (err) throw err;
 		res.render('remove-keeper', {title: 'Remove keeper', userData: data});
@@ -64,7 +64,7 @@ router.get('/remove-keeper/:id', function(req, res) {
 });
 
 router.get('/confirm-team/:id', function(req, res) {
-	var sql='SELECT * from players WHERE fantnum=?';
+	var sql='SELECT * from players23 WHERE fantnum=?';
 	db.query(sql,[req.params.id], function (err, data){
 		if (err) throw err;
 		res.render('confirm-team', {title: 'Confirm change players team', userData: data});
@@ -72,7 +72,7 @@ router.get('/confirm-team/:id', function(req, res) {
 });
 
 router.get('/keepers', function(req, res) {
-	var sql='SELECT * from players WHERE keeper=\'yes\' ORDER BY players.owner';
+	var sql='SELECT * from players23 WHERE keeper=\'yes\' ORDER BY players23.owner';
 	db.query(sql,[req.params.id], function (err, data){
 		if (err) throw err;
 		res.render('keepers', {title: 'List of Keepers', userData: data});
@@ -80,7 +80,7 @@ router.get('/keepers', function(req, res) {
 });
 
 router.get('/change-team/:owner/:id', function(req, res) {
-	var sql='UPDATE players SET owner=? WHERE fantnum=?';
+	var sql='UPDATE players23 SET owner=? WHERE fantnum=?';
 	db.query(sql,[req.params.owner,req.params.id], function (err, data){
 		if (err) throw err;
 		res.render('change-team', {title: 'Confirm change players team', userData: data});
@@ -88,7 +88,7 @@ router.get('/change-team/:owner/:id', function(req, res) {
 });
 
 router.get('/rookies', function(req, res) {
-	var sql='SELECT * from players WHERE rookie=\'yes\'';
+	var sql='SELECT * from players23 WHERE rookie=\'yes\'';
 	db.query(sql,[req.params.owner,req.params.id], function (err, data){
 		if (err) throw err;
 		res.render('rookies', {title: 'Rookie Players', userData: data});
@@ -96,7 +96,7 @@ router.get('/rookies', function(req, res) {
 });
 
 router.get('/add-rookie/:id', function(req, res) {
-	var sql='UPDATE players SET rookie=\'yes\' WHERE fantnum=?';
+	var sql='UPDATE players23 SET rookie=\'yes\' WHERE fantnum=?';
 	db.query(sql,[req.params.id], function (err, data){
 		if (err) throw err;
 		res.render('add-rookie', {title: 'Make rookie', userData: data});
