@@ -24,7 +24,7 @@ router.get('/available', function(req, res) {
 });
 
 router.get('/steal', function(req, res) {
-	var sql='SELECT * from players_23 WHERE keeper=\'no\' and owner!=\'available\' ORDER by players_23.rank';
+	var sql='SELECT * from players_23 WHERE keeper=\'no\' and owner!=\'available\' or owner!=\'Adam Staryak\' ORDER by players_23.rank';
 	db.query(sql,function (err, data){
 		if (err) throw err;
 		res.render('steal', {title: 'Steal Draft', userData: data});
